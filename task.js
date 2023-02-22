@@ -26,7 +26,7 @@ function showAlert(msg) {
     setTimeout(() => {
         altDiv.style.display = 'none';
         location.reload();
-    }, 3000);
+    }, 1000);
 }
 
 // showAlert()

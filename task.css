@@ -218,7 +218,6 @@ li {
     display: inline-block;
     border-radius: 5px;
     cursor: pointer;
-    margin-inline: 2px;
     font-size: 24px;
     border: 5px solid white;
     background-color: #101820FF;
@@ -231,6 +230,5 @@ li {
 }
 
 #modalBtn32 {
-    /* 640 */
-    margin-left: 640px;
+    float: right;
 }
