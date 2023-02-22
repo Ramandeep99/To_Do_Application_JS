@@ -297,7 +297,7 @@ function addMoreFunction(ele) {
         var item = JSON.parse(localStorage.getItem(cardName));
         // location.reload();
         list.innerHTML += `<div class="itemsInsideItem"><span class="itemsInsideItem">${newItem}</span><button type="button" onclick="markItemFunction(this)" class="markBtnInsideItem">Done</button></div>`
-    })
+    }, { once: true })
 }
 
 function markItemFunction(ele) {
