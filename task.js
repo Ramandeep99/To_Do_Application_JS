@@ -189,7 +189,7 @@ const head = document.getElementsByClassName('headings');
 const modal3 = document.getElementById('modal3')
 const fullViewAddDel = document.getElementsByClassName('btnInsideItem3')
 const addMore = document.getElementById('btnInsideItem1')
-const deleteList = document.getElementById('btnInsideItem2')
+
 var markItems = document.getElementsByClassName('markBtnInsideItem9')
 
 
@@ -299,64 +299,40 @@ function addMoreFunction(ele) {
         // location.reload();
         // window.alert("Item added.")
         list.innerHTML += ` <div class="itemsInsideItem">
-    <span class="itemsInsideItem">${newItem} </span>
-    <button type="button" class="markBtnInsideItem">Done</button>
-    </div>`
+        <span class="itemsInsideItem">${newItem} </span>
+        <button type="button" onclick="markItemFunction(this)" class="markBtnInsideItem">Done</button>
+        </div>`
     })
 }
 
 function markItemFunction(ele) {
     // console.log(ele)
     const cardName = ele.parentNode.parentNode.parentNode.childNodes[0].innerHTML;
-    const itemName = ele.parentNode.childNodes[0].innerHTML
+    const itemName = ele.parentNode.childNodes[1].innerHTML
     console.log(itemName)
-    console.log(cardName)
     const myObj = JSON.parse(window.localStorage.getItem(cardName))
     window.localStorage.removeItem(cardName);
     myObj[itemName] = 0;
     window.localStorage.setItem(cardName, JSON.stringify(myObj))
         // location.reload();
         // window.alert("List Updated.")
-    ele.parentNode.childNodes[0].style.textDecoration = 'line-through';
-    ele.parentNode.childNodes[1].style.display = 'none';
+    ele.parentNode.childNodes[1].style.textDecoration = 'line-through';
+    ele.parentNode.childNodes[3].style.display = 'none';
 }
 
 // to go to particular list of items
 for (let i in head) {
     if (head[i].parentNode) {
         head[i].addEventListener('click', () => {
+            console.log('Full view')
             mainPage.style.display = 'none';
             modal3.style.display = 'block'
             const cardName = head[i].innerHTML
             const myObj = JSON.parse(window.localStorage.getItem(cardName))
-
             fullViewHelper(cardName, myObj);
 
-            // to add an item in list in full view
-            // addMore.addEventListener('click', () => {
-            //         console.log('add item clicked')
-            //         modal3.style.display = 'none';
-            //         modalPage2.style.display = 'block'
-
-            //         modalBtnAdd2.addEventListener('click', () => {
-            //             const newItem = modalInput2.value
-            //             console.log(newItem)
-            //             const myObj = JSON.parse(window.localStorage.getItem(cardName))
-            //             window.localStorage.removeItem(cardName);
-            //             myObj[newItem] = 1;
-            //             window.localStorage.setItem(cardName, JSON.stringify(myObj))
-            //                 // fullViewDiv.firstElementChild.style.display = 'none'
-            //                 // console.log(fullViewDiv.children);
-            //             modal3.style.display = 'block';
-            //             modalPage2.style.display = 'none'
-
-            //             var item = JSON.parse(localStorage.getItem(cardName));
-            //             fullViewHelper(cardName, item);
-            //             // location.reload();
-            //             // window.alert("Item added.")
-            //         })
-            //     })
             // to delete an item in full view
+            const deleteList = document.getElementById('btnInsideItem2')
             deleteList.addEventListener('click', () => {
                 console.log('delete clicked')
                 window.localStorage.removeItem(cardName)
