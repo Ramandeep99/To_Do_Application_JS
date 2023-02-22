@@ -296,7 +296,7 @@ function addMoreFunction(ele) {
 
         var item = JSON.parse(localStorage.getItem(cardName));
         // fullViewHelper(cardName, item);
-        // location.reload();
+        location.reload();
         // window.alert("Item added.")
         list.innerHTML += ` <div class="itemsInsideItem">
         <span class="itemsInsideItem">${newItem} </span>
@@ -308,23 +308,24 @@ function addMoreFunction(ele) {
 function markItemFunction(ele) {
     // console.log(ele)
     const cardName = ele.parentNode.parentNode.parentNode.childNodes[0].innerHTML;
-    const itemName = ele.parentNode.childNodes[1].innerHTML
-    console.log(itemName)
+    const itemName = ele.parentNode.childNodes[0].innerHTML
+        // console.log(ele.parentNode.childNodes[1])
+        // console.log(itemName)
     const myObj = JSON.parse(window.localStorage.getItem(cardName))
     window.localStorage.removeItem(cardName);
     myObj[itemName] = 0;
     window.localStorage.setItem(cardName, JSON.stringify(myObj))
         // location.reload();
         // window.alert("List Updated.")
-    ele.parentNode.childNodes[1].style.textDecoration = 'line-through';
-    ele.parentNode.childNodes[3].style.display = 'none';
+    ele.parentNode.childNodes[0].style.textDecoration = 'line-through';
+    ele.parentNode.childNodes[1].style.display = 'none';
 }
 
 // to go to particular list of items
 for (let i in head) {
     if (head[i].parentNode) {
         head[i].addEventListener('click', () => {
-            console.log('Full view')
+            // console.log('Full view')
             mainPage.style.display = 'none';
             modal3.style.display = 'block'
             const cardName = head[i].innerHTML
