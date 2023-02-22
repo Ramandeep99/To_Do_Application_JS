@@ -295,13 +295,8 @@ function addMoreFunction(ele) {
         modalPage2.style.display = 'none'
 
         var item = JSON.parse(localStorage.getItem(cardName));
-        // fullViewHelper(cardName, item);
-        location.reload();
-        // window.alert("Item added.")
-        list.innerHTML += ` <div class="itemsInsideItem">
-        <span class="itemsInsideItem">${newItem} </span>
-        <button type="button" onclick="markItemFunction(this)" class="markBtnInsideItem">Done</button>
-        </div>`
+        // location.reload();
+        list.innerHTML += `<div class="itemsInsideItem"><span class="itemsInsideItem">${newItem}</span><button type="button" onclick="markItemFunction(this)" class="markBtnInsideItem">Done</button></div>`
     })
 }
 
@@ -316,7 +311,6 @@ function markItemFunction(ele) {
     myObj[itemName] = 0;
     window.localStorage.setItem(cardName, JSON.stringify(myObj))
         // location.reload();
-        // window.alert("List Updated.")
     ele.parentNode.childNodes[0].style.textDecoration = 'line-through';
     ele.parentNode.childNodes[1].style.display = 'none';
 }
