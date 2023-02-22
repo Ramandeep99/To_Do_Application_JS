@@ -229,6 +229,21 @@ li {
     margin: 50px;
 }
 
+#modalBtn31 {
+    margin-left: 300px;
+}
+
 #modalBtn32 {
     float: right;
+    margin-right: 300px;
+}
+
+#emptyDiv {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 45px;
+    color: #101820FF;
+    margin-top: 40px;
+    word-spacing: 9px;
 }

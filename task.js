@@ -5,6 +5,7 @@ const modalBtnClose = document.getElementById('modalBtn2')
 const modalBtnAdd = document.getElementById('modalBtn1');
 const modalInput = document.getElementById('modalInput');
 const deleteItemBtn = document.getElementsByClassName('btnInsideItem')
+const emptyDiv = document.querySelector('#emptyDiv')
 
 // add item to a list
 const modalPage2 = document.getElementById('modal2')
@@ -45,7 +46,6 @@ modalBtnClose.addEventListener('click', () => {
 
 // utility function to add new list
 function test(heading, allItems) {
-
     var element = document.createElement("div");
     element.className = 'items';
     element.id = 'items';
@@ -108,7 +108,7 @@ Object.keys(localStorage).forEach(function(key) {
 });
 
 
-// to add new list of items
+// to add new list
 modalBtnAdd.addEventListener('click', () => {
     const newTableName = modalInput.value
     var myObj = {}
@@ -169,8 +169,6 @@ for (let ele in mark) {
             // console.log(mark[ele], mark[ele].parentNode.parentNode.parentNode.childNodes[0].innerHTML)
             const cardName = mark[ele].parentNode.parentNode.parentNode.childNodes[0].innerHTML;
             const itemName = mark[ele].parentNode.childNodes[0].innerHTML
-                // console.log(itemName)
-                // console.log(cardName)
             const myObj = JSON.parse(window.localStorage.getItem(cardName))
             window.localStorage.removeItem(cardName);
             myObj[itemName] = 0;
@@ -349,3 +347,11 @@ addNewList.addEventListener('click', () => {
     modal3.style.display = 'none';
     modalPage.style.display = 'block'
 })
+
+
+// to show text for empty lists
+if (window.localStorage.length == 0) {
+    emptyDiv.style.display = 'block';
+} else {
+    emptyDiv.style.display = 'none';
+}
